@@ -10,17 +10,24 @@
     font-size: 37px;
     font-weight: bold;
 }
+.navbar-brand:hover {
+    color: #0e797d;
+}
 
 .user-logins {
-    float: right;
-    margin-right: 2%;
-    margin-top: 1%;
-}
+   right: 0;
+   margin-left: 7%;
+   margin-top: 1%;
+ }
 
 .btn-class {
     color: cyan;
     font-size: 20px;
+    font-weight:bold;
 }
+.btn-class:hover {
+    color: #0e797d;
+    }
 
 .topnav {
     overflow: hidden;
@@ -33,26 +40,18 @@
     top: 0;*/
 }
 
-#topnav a {
-    float: left;
-    display: block;
-    color: cyan;
-    text-align: center;
-    padding: 5px 16px;
-    text-decoration: none;
-    font-size: 37px;
-    font-weight: bold;
+.search-container {
+   width: 50%;
 }
-
 .topnav .search-container {
     padding: 15px 16px;
 }
 
 .topnav input[type=text] {
-    width: 30%;
+    width: 85%;
     margin-top: 8px;
     font-size: 17px;
-    border: 1px solid #d6d4fc;
+    border: 1px solid cyan;
     border-radius: 5px;
     padding: 5px;
 }
@@ -62,7 +61,7 @@
     padding: 6px 10px;
     margin-top: 8px;
     margin-right: 16px;
-    background: #1c1a3d;
+    background: cyan;
     font-size: 17px;
     border: none;
     cursor: pointer;
@@ -70,7 +69,7 @@
 }
 
     .topnav .search-container button:hover {
-        background: #1c1a3d;
+        background: #0e797d;
     }
 
 @media screen and (max-width: 600px) {
@@ -99,6 +98,6 @@
     }
 
     .topnav input[type=text] {
-        border: 1px solid cyan;
+        border: 1px solid red;
     }
 }
