@@ -9,11 +9,10 @@
 
 .marginTop {
     margin-top: 50px;
+    background: #f7f9ff;
 }
 
-* {
-    box-sizing: border-box;
-}
+
 
 /* Create two equal columns that floats next to each other */
 .left-column {
@@ -47,52 +46,54 @@
 }
 
 .card-box {
-    background: black; /*#f7f9ff;*/
-    border-radius: 15px;
-    margin-bottom: 2%;
-    margin-left: 1%;
+    height: 450px;
+    width: 200px;
+    margin-bottom: 1%;
 }
-
-.card1:hover {
-    margin: 1%;
+.card-box:hover {
+    transform: translate(0px,-10px);
     transition: 1s;
 }
-
+.card-body {
+    background: #dcecf2;
+    
+}
+.card-footer {
+    background: #dcecf2;
+    border-radius: 0px 0px 7px 7px;
+}
 .card-img-top {
-    border-radius: 15px;
-    width: 100%;
+    border-radius: 7px 7px 0px 0px;
 }
 
 .room-category {
     color: #540a2a;
     font-weight: bold;
     margin-left: 3%;
+    font-size: 12px;
+    cursor: pointer;
 }
-
+.room-category:hover {
+    color: #0a9ea3;
+}
 .card-title {
     color: black;
     font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
 }
 
+.card-title:hover {
+    color: #0a9ea3;
+}
 .card-text {
-    font-size: 15px;
-}
-
-.truncate {
-    /**Major Properties**/
-    overflow: hidden;
-    line-height: 1.5rem;
-    max-height: 8rem;
-    -webkit-box-orient: vertical;
-    display: block;
-    display: -webkit-box;
-    overflow: hidden !important;
-    -webkit-line-clamp: 2;
+    font-size: 12px;
+    font-family: Andale Mono, monospace;
 }
 
 .room-price {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
     color: #031a5e;
     margin-left: 3%;
 }
@@ -112,14 +113,26 @@
 .heart-rate {
     position: absolute;
     right: 0;
-    margin-right: 5%;
+    margin-right: 7%;
 }
 
 .glyphicon-heart {
-    font-size: 30px;
+    font-size: 25px;
     cursor: pointer;
 }
-
-.checked-heart {
+.glyphicon-heart:hover {
     color: red;
+}
+
+
+.truncate {
+    /**Major Properties**/
+    overflow: hidden;
+    line-height: 1.5rem;
+    max-height: 8rem;
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    overflow: hidden !important;
+    -webkit-line-clamp: 4;
 }

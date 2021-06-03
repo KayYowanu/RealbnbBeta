@@ -35,11 +35,19 @@ namespace RealbnbBeta.Service
                 }
                 return "Failed to Save!";
             }
-       /* public List<bnbProperties> GetProperties()
+        /* public List<bnbProperties> GetProperties()
+         {
+             //var kay = _bnbService.GetProperties2();
+             return 
+         }*/
+        public byte[] GetImage(string kBase64String)
         {
-            //var kay = _bnbService.GetProperties2();
-            return 
-        }*/
-       
+            byte[] bytes = null;
+            if (!string.IsNullOrEmpty(kBase64String))
+            {
+                bytes = Convert.FromBase64String(kBase64String);
+            }
+            return bytes;
+        }
     }
 }

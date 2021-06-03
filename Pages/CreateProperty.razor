@@ -4,6 +4,8 @@
 @using RealbnbBeta.Service
 @inject IbnbService bnbservice
 @using RealbnbBeta.Data
+@using System.IO
+@using BlazorInputFile
 
 <div class="property-page">
     <form class="property-upload-form">
@@ -42,18 +44,16 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-10">
-                        <label class="file">
-                            <h4>Select Main Image</h4>
-                            <BlazorInputFile.InputFile OnChange="SaveSelectedImage" />
-                            <span class="file-custom"></span>
-                        </label>
+                        <h4>Select Main Image</h4>
+                        <BlazorInputFile.InputFile OnChange="SaveSelectedImage" accept="image/png,image/gif,image/jpeg, image/jpg" />
+                        
                     </div>
                 </div>
             </div><!--Left Column content ends-->
 
 
             <div class="middle-column">
-                <!--middle Column content begins-->
+                <!--middle Column content begins -->
                 <!--Amenities Begins-->
                 <div class="form-group col-md-12">
                     <h4>Amenities</h4>
@@ -143,10 +143,10 @@
                 <!--right Column content begins-->
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="@imgsrc" width="200" height="200" style="border: 1px solid #000000; margin-top:10px;" />
+                        <img src="@imgsrc" width="300" height="200" style="border: 1px solid #000000; margin-top:10px; background:#dcecf2;" />
                     </div>
                     <div class="col-md-12">
-                        <span style="font-weight:bold; font-size:24px;">@Message</span>
+                        <span style="font-weight:bold; font-size:24px;"></span>
                     </div>
 
                 </div>
@@ -175,40 +175,35 @@
     }*/
 
     string imgsrc = "";
-    string Message = "";
-    IFileListEntry file = null;
-    byte[] _filebytes = null;
+    //string Message = "";
+    IFileListEntry file;
+
+    public byte[] _filebytes { get; set; }
 
     bnbProperties objbnb = new bnbProperties();
 
-    public async Task SaveSelectedImage(IFileListEntry[] files)
+    async Task SaveSelectedImage(IFileListEntry[] files)
     {
-        if (files.Count() > 0)
+        var file = files.FirstOrDefault();
+        if (file != null)
         {
-            file = files.FirstOrDefault();
-            using (var ms = new MemoryStream())
-            {
-                await file.Data.CopyToAsync(ms);
-                _filebytes = ms.ToArray();
+            var ms = new MemoryStream();
+            await file.Data.CopyToAsync(ms);
+            _filebytes = ms.ToArray();
 
-                ImagePage imagepage = new ImagePage(bnbservice);
-                var photo = imagepage.GetImage(Convert.ToBase64String(_filebytes));
-                imgsrc = string.Format("data:image/jpg;base64," + Convert.ToBase64String(photo));
-
-            }
+            /*For displaying main Image*/
+            ImagePage imagepage = new ImagePage(bnbservice);
+            var photo = imagepage.GetImage(Convert.ToBase64String(_filebytes));
+            imgsrc = string.Format("data:image/jpg;base64," + Convert.ToBase64String(photo));
         }
     }
     /*********************For create property record**************************/
     //bnbProperties objbnb = new bnbProperties();
     public void UploadProperty()
     {
-        ImagePage imagepage = new ImagePage(bnbservice);
-        Message = imagepage.SaveInformation(_filebytes, objbnb);
-
-        objbnb = new bnbProperties();
-        imgsrc = "";
-        //await bnbService.CreateProperty(_filebytes, objbnb);
-        //NavigationManager.NavigateTo("Todolist");
+        objbnb.PropertyId = 0;
+        objbnb.Imagebnb = _filebytes;
+        bnbservice.CreateProperty(objbnb);
     }
 }
 

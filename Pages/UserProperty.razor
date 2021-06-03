@@ -1,8 +1,8 @@
 ﻿@page "/userproperties"
-
 @using RealbnbBeta.Models
+@using RealbnbBeta.Imageclass
 @using RealbnbBeta.Service
-@inject IbnbService bnbService
+@inject IbnbService bnbservice
 
 
 <div class="main-columns marginTop">
@@ -25,31 +25,31 @@
 
                     @foreach (var list in objbnb)
                     {
-                        <div class="card-box col-md-4">
-                            <img class="card-img-top" src="/img/img-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <div class="row">
-                                    <h5 class="room-category">@list.Category</h5>
-                                    <!--Ratings-->
-                                    <div class="ratings">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <!--/Ratings-->
+                    <div class="card-box col-lg-4">
+                        <img class="card-img-top" src="@convertImage(list.Imagebnb)" alt="Card image cap" style="height:50%; width: 100%;">
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="room-category">@list.Category</h5>
+                                <!--Ratings-->
+                                <div class="ratings">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
                                 </div>
-                                <h5 class="card-title">@list.Name</h5>
-                                <p class="card-text truncate">@list.Description</p>
+                                <!--/Ratings-->
                             </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <small class="room-price">$@list.Price</small>
-                                    <div class="heart-rate"><span class="glyphicon glyphicon-heart checked-heart"></span></div>
-                                </div>
+                            <h5 class="card-title">@list.Name</h5>
+                            <p class="card-text truncate">@list.Description</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <small class="room-price">$@list.Price</small>
+                                <div class="heart-rate"><span class="glyphicon glyphicon-heart .checked-heart"></span></div>
                             </div>
                         </div>
+                    </div>
                     }
                 </div>
                 <!--Right Column content ends-->
@@ -59,11 +59,28 @@
 </div>
 
 @code {
-    IEnumerable<bnbProperties> objbnb;
+    string imgsrc = "";
 
-    protected override async Task OnInitializedAsync()
+    //IEnumerable<bnbProperties> objbnb;
+    //bnbProperties objbnb = new bnbProperties();
+    List<bnbProperties> objbnb;
+
+    protected override void OnInitialized()
     {
-        objbnb = await bnbService.GetProperties();
+        objbnb = bnbservice.GetProperties2();
+        /*ImagePage imagepage = new ImagePage(bnbservice);
+        objbnb = imagepage.GetProperties();
+        imgsrc = objbnb.ImageUrl;*/
+    }
+    string convertImage(byte[] image)
+    {
+        if (image != null)
+        {
+            var ky = Convert.ToBase64String(image);
+            var cy = string.Format("data:image/jpg;base64, {0}", ky);
+            return cy;
+        }
+        return "";
     }
 
 }
