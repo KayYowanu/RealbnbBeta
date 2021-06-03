@@ -1,0 +1,214 @@
+﻿@page "/create"
+@using RealbnbBeta.Models
+@using RealbnbBeta.Imageclass
+@using RealbnbBeta.Service
+@inject IbnbService bnbservice
+@using RealbnbBeta.Data
+
+<div class="property-page">
+    <form class="property-upload-form">
+        <div class="row">
+            <div class="left-column">
+                <!--Left Column content begins-->
+                <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label for="roomName">Room Name</label>
+                        <input type="text" class="form-control" id="roomName" placeholder="Enter the room name" @bind="@objbnb.Name">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label for="price">Price</label>
+                        <input type="text" class="form-control" id="price" placeholder="Enter price in USD" @bind="@objbnb.Price">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label for="Category">Room Category</label>
+                        <select id="inputState" class="form-control" @bind="@objbnb.Category">
+                            <option selected>Choose Category</option>
+                            <option value="Private Room">Private Room</option>
+                            <option value="Hotel Room">Hotel Room</option>
+                            <option value="Entire Place">Entire Place</option>
+                            <option value="Shared Room">Shared Room</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" id="location" placeholder="Enter the property location" @bind="@objbnb.Location">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label class="file">
+                            <h4>Select Main Image</h4>
+                            <BlazorInputFile.InputFile OnChange="SaveSelectedImage" />
+                            <span class="file-custom"></span>
+                        </label>
+                    </div>
+                </div>
+            </div><!--Left Column content ends-->
+
+
+            <div class="middle-column">
+                <!--middle Column content begins-->
+                <!--Amenities Begins-->
+                <div class="form-group col-md-12">
+                    <h4>Amenities</h4>
+                    <div class="row checkbox-class">
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Air Conditioning
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value=""> Kitchen
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Shampoo
+                        </label>
+                    </div>
+                    <div class="row checkbox-class">
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Indoor Fireplace
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Dryer
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Smoke&nbsp;Alarm
+                        </label>
+                    </div>
+                    <div class="row checkbox-class">
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Piano
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Wifi
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Ski&minus;In/Ski&minus;Out
+                        </label>
+                    </div>
+                    <div class="row checkbox-class">
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">High&nbsp;Chair
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Heating
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Private Bathroom
+                        </label>
+                    </div>
+                    <div class="row checkbox-class">
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Carbon Monoxide Alarm
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Waterfront
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Iron
+                        </label>
+                    </div>
+                    <div class="row checkbox-class">
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Hair&emsp;Dryer
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Dedicated Workspace
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Hangers
+                        </label>
+                    </div>
+                    <div class="row checkbox-class">
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Washing Machine
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">Beachfront
+                        </label>
+                        <label class="checkbox-inline col-md-3">
+                            <input type="checkbox" value="">TV
+                        </label>
+                    </div>
+                </div>
+                <!--Amenities Ends-->
+
+            </div><!--middle Column content ends-->
+
+            <div class="right-column">
+                <!--right Column content begins-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="@imgsrc" width="200" height="200" style="border: 1px solid #000000; margin-top:10px;" />
+                    </div>
+                    <div class="col-md-12">
+                        <span style="font-weight:bold; font-size:24px;">@Message</span>
+                    </div>
+
+                </div>
+            </div><!--right Column content ends-->
+
+            <div class="form-group col-md-10">
+                <label for="description">Room Description</label>
+                <textarea type="text" class="form-control" rows="5" cols="2" id="description" placeholder="Write a brief description about the room" @bind="@objbnb.Description" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" @onclick="@UploadProperty">Upload</button>
+
+    </form>
+</div>
+
+@code {
+    /*for image upload MudBlazor code*/
+    /*IList<IBrowserFile> files = new List<IBrowserFile>();
+    private void UploadFiles(InputFileChangeEventArgs e)
+    {
+        foreach (var file in e.GetMultipleFiles())
+        {
+            files.Add(file);
+        }
+        //TODO upload the files to the server
+    }*/
+
+    string imgsrc = "";
+    string Message = "";
+    IFileListEntry file = null;
+    byte[] _filebytes = null;
+
+    bnbProperties objbnb = new bnbProperties();
+
+    public async Task SaveSelectedImage(IFileListEntry[] files)
+    {
+        if (files.Count() > 0)
+        {
+            file = files.FirstOrDefault();
+            using (var ms = new MemoryStream())
+            {
+                await file.Data.CopyToAsync(ms);
+                _filebytes = ms.ToArray();
+
+                ImagePage imagepage = new ImagePage(bnbservice);
+                var photo = imagepage.GetImage(Convert.ToBase64String(_filebytes));
+                imgsrc = string.Format("data:image/jpg;base64," + Convert.ToBase64String(photo));
+
+            }
+        }
+    }
+    /*********************For create property record**************************/
+    //bnbProperties objbnb = new bnbProperties();
+    public void UploadProperty()
+    {
+        ImagePage imagepage = new ImagePage(bnbservice);
+        Message = imagepage.SaveInformation(_filebytes, objbnb);
+
+        objbnb = new bnbProperties();
+        imgsrc = "";
+        //await bnbService.CreateProperty(_filebytes, objbnb);
+        //NavigationManager.NavigateTo("Todolist");
+    }
+}
+

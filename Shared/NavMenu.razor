@@ -1,0 +1,17 @@
+﻿<div class="topnav">
+    <a class="navbar-brand" href="/">Realbnb</a>
+    <!-- <div class="search-container">
+         <form action="/upload">
+             <input type="text" placeholder="Search listings...." name="search">
+             <button class="btn btn-success" href="/upload">Search</button>
+         </form>
+     </div>-->
+    <div class="user-logins">
+        <AuthorizeView>
+            <Authorized>
+                <a class="btn btn-class" href="/userproperties">Manage Properties</a>
+            </Authorized>
+        </AuthorizeView>
+        <button class="btn btn-class"><LoginDisplay /></button>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+﻿@page "/"
+@using RealbnbBeta.Models
+@using RealbnbBeta.Imageclass
+@using RealbnbBeta.Service
+@inject IbnbService bnbservice
+
+<div class="main-columns marginTop">
+    <div class="row">
+        <div class="left-column">
+            <!--Left Column content begins-->
+
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <label for="Category">Filter by Price</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose Price</option>
+                        <option value="Private Room">Below $200</option>
+                        <option value="Hotel Room">Below $150</option>
+                        <option value="Entire Place">Below $100</option>
+                        <option value="Shared Room">Below $50</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <label for="Category">Filter by Category</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose Category</option>
+                        <option value="Private Room">Private Room</option>
+                        <option value="Hotel Room">Hotel Room</option>
+                        <option value="Entire Place">Entire Place</option>
+                        <option value="Shared Room">Shared Room</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <label for="Category">Filter by Location</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose Location</option>
+                        <option value="Toronto">Toronto</option>
+                        <option value="Hotel Room">Victoria</option>
+                        <option value="Entire Place">Quebec City</option>
+                        <option value="Shared Room">Charlottetown</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <button class="btn btn-secondary">Submit</button>
+            </div>
+
+        </div><!--Left Column content ends-->
+        @if (objbnb == null)
+        {
+            <div class="spinner-border text-primary" role="status"></div>
+        }
+        else
+        {
+            <div class="right-column">
+                <!--Right Column content begins-->
+                <div class="card-deck">
+
+                    @foreach (var list in objbnb)
+                    {
+                        <div class="card-box col-md-4">
+                            <img class="card-img-top" src="@convertImage(list.Imagebnb)" alt="Card image cap" style="height:50%; width: 100%;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h5 class="room-category">@list.Category</h5>
+                                    <!--Ratings-->
+                                    <div class="ratings">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                    <!--/Ratings-->
+                                </div>
+                                <h5 class="card-title">@list.Name</h5>
+                                <p class="card-text truncate">@list.Description</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <small class="room-price">$@list.Price</small>
+                                    <div class="heart-rate"><span class="glyphicon glyphicon-heart checked-heart"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!--Right Column content ends-->
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    string imgsrc = "";
+
+    //IEnumerable<bnbProperties> objbnb;
+    //bnbProperties objbnb = new bnbProperties();
+    List<bnbProperties> objbnb;
+
+    protected override void OnInitialized()
+    {
+        objbnb = bnbservice.GetProperties2();
+        /*ImagePage imagepage = new ImagePage(bnbservice);
+        objbnb = imagepage.GetProperties();
+        imgsrc = objbnb.ImageUrl;*/
+    }
+    string convertImage(byte[] image)
+    {
+        if(image != null)
+        {
+            var ky = Convert.ToBase64String(image);
+            var cy = string.Format("data:image/jpg;base64, {0}", ky);
+            return cy;
+        }
+        return "";
+    }
+
+}
