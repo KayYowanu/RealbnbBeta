@@ -1,6 +1,5 @@
 ﻿@page "/create"
 @using RealbnbBeta.Models
-@using RealbnbBeta.Imageclass
 @using RealbnbBeta.Service
 @inject IbnbService bnbservice
 @using RealbnbBeta.Data
@@ -196,7 +195,7 @@
             _filebytes = ms.ToArray();
 
             /*For displaying main Image*/
-            ImagePage imagepage = new ImagePage(bnbservice);
+            ImageService imagepage = new ImageService(bnbservice);
             var photo = imagepage.GetImage(Convert.ToBase64String(_filebytes));
             imgsrc = string.Format("data:image/jpg;base64," + Convert.ToBase64String(photo));
         }

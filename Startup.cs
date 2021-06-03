@@ -34,7 +34,6 @@ namespace RealbnbBeta
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddSingleton<WeatherForecastService>();
             /*Registrating Service*/
             SqlConnectionConfiguration.ConnectionString = Configuration.GetConnectionString("DefaulConnection");
             /**/
