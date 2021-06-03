@@ -42,6 +42,8 @@ namespace RealbnbBeta
             services.AddSingleton(sqlConnectionConfiguration);
 
             services.AddScoped<IbnbService, bnbService>();
+            //For current user
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

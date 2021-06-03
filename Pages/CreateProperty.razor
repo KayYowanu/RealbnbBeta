@@ -6,6 +6,8 @@
 @using RealbnbBeta.Data
 @using System.IO
 @using BlazorInputFile
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor currentUser
 
 <div class="property-page">
     <form class="property-upload-form">
@@ -46,7 +48,7 @@
                     <div class="form-group col-md-10">
                         <h4>Select Main Image</h4>
                         <BlazorInputFile.InputFile OnChange="SaveSelectedImage" accept="image/png,image/gif,image/jpeg, image/jpg" />
-                        
+
                     </div>
                 </div>
             </div><!--Left Column content ends-->
@@ -173,6 +175,8 @@
         }
         //TODO upload the files to the server
     }*/
+    /*For the current user*/
+    public string UserName;
 
     string imgsrc = "";
     //string Message = "";
@@ -201,9 +205,10 @@
     //bnbProperties objbnb = new bnbProperties();
     public void UploadProperty()
     {
+        UserName = currentUser.HttpContext.User.Identity.Name;
         objbnb.PropertyId = 0;
         objbnb.Imagebnb = _filebytes;
-        bnbservice.CreateProperty(objbnb);
+        bnbservice.CreateProperty(objbnb, UserName);
     }
 }
 

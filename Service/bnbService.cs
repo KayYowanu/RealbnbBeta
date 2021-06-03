@@ -61,6 +61,47 @@ namespace RealbnbBeta.Service
             }
             return _bnbImg;
         }
+
+        /*For Current User*/
+        List<bnbProperties> _bnbprops;
+        public List<bnbProperties> GetProperties2(string username)
+        {
+            _bnbprops = new List<bnbProperties>();
+            using (IDbConnection con = new SqlConnection(SqlConnectionConfiguration.ConnectionString))
+            {
+                const string query = @"select * from dbo.bnbProperties where username = @username order by PropertyId DESC";
+
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+                try
+                {
+                    _bnbprops = (List<bnbProperties>)con.Query<bnbProperties>(query, new { username }, commandType: CommandType.Text);
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+
+            }
+            /* using (IDbConnection con = new SqlConnection(SqlConnectionConfiguration.ConnectionString))
+             {
+                 if (con.State == ConnectionState.Closed)
+                     con.Open();
+                 var bnbprop = con.Query<bnbProperties>("select * from dbo.bnbProperties order by PropertyId DESC").ToList();
+                 if (bnbprop != null && bnbprop.Count > 0)
+                 {
+                     //_bnbprops = bnbImgs.ToList();
+                     _bnbprops = await conn.Query<bnbProperties>(query, new { Id }, commandType: CommandType.Text);
+                 }
+             }*/
+            return _bnbprops;
+        }
         //bnbProperties _bnbprops = new bnbProperties();
         /* public async Task<IEnumerable<bnbProperties>> GetProperties()
          {
@@ -79,14 +120,14 @@ namespace RealbnbBeta.Service
          }*/
 
         bnbProperties _bnbprop = new bnbProperties();
-        public bnbProperties CreateProperty(bnbProperties bnbprop)
+        public bnbProperties CreateProperty(bnbProperties bnbprop, string username)
         {
                 _bnbprop = new bnbProperties();
                 using (IDbConnection con = new SqlConnection(SqlConnectionConfiguration.ConnectionString))
                 {
                     if (con.State == ConnectionState.Closed)
                         con.Open();
-                    var bnbp = con.Query<bnbProperties>("Create_Property", this.SetParameters(bnbprop), commandType: CommandType.StoredProcedure);
+                    var bnbp = con.Query<bnbProperties>("Create_Property", this.SetParameters(bnbprop, username), commandType: CommandType.StoredProcedure);
 
                     if (bnbp != null && bnbp.Count() > 0)
                     {
@@ -97,7 +138,7 @@ namespace RealbnbBeta.Service
         }
 
 
-        private DynamicParameters SetParameters(bnbProperties bnbprops)
+        private DynamicParameters SetParameters(bnbProperties bnbprops, string username)
         {
             DynamicParameters parameters = new DynamicParameters();
 
@@ -107,6 +148,7 @@ namespace RealbnbBeta.Service
             parameters.Add("@Price", bnbprops.Price);
             parameters.Add("@Location", bnbprops.Location);
             parameters.Add("@Imagebnb", bnbprops.Imagebnb);
+            parameters.Add("@Username", username);
 
             return parameters;
         }

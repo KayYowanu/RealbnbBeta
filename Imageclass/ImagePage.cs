@@ -12,10 +12,13 @@ namespace RealbnbBeta.Imageclass
             _bnbService = bnbService;
         }
 
+        /*For the current user*/
+        public string UserName;
         public string SaveInformation(byte[] fileBytes, bnbProperties bnbImg)
         {
+           // UserName = currentUser.HttpContext.User.Identity.Name;
             bnbImg.Imagebnb = fileBytes;
-            bnbImg = _bnbService.CreateProperty(bnbImg);
+            bnbImg = _bnbService.CreateProperty(bnbImg, UserName);
             if (bnbImg.PropertyId > 0)
             {
                 return "Saved Succesfully!";

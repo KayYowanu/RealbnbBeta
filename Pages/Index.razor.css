@@ -1,7 +1,9 @@
 /**********************************CSS CODE FOR THE LEFT COLUMN****************************************/
 .filter-box {
 }
-
+.form-control {
+    border: 1px solid cyan;
+}
 /**********************************CSS CODE FOR THE RIGHT COLUMN****************************************/
 .main-columns {
     width: 99%;

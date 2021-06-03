@@ -17,5 +17,6 @@ namespace RealbnbBeta.Models
         public string Location { get; set; }
         public byte[] Imagebnb { get; set; }
         public string ImageUrl { get; set; }
+        public string Username { get; set; }
     }
 }
