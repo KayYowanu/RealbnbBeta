@@ -5,7 +5,6 @@
 @inject IbnbService bnbservice
 
 <div class="main-columns marginTop">
-    <div class="row">
         <div class="left-column">
             <!--Left Column content begins-->
 
@@ -56,43 +55,41 @@
         }
         else
         {
-            <div class="right-column">
-                <!--Right Column content begins-->
-                <div class="card-deck">
-
-                    @foreach (var list in objbnb)
-                    {
-                        <div class="card-box col-md-4">
-                            <img class="card-img-top" src="@convertImage(list.Imagebnb)" alt="Card image cap" style="height:50%; width: 100%;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <h5 class="room-category">@list.Category</h5>
-                                    <!--Ratings-->
-                                    <div class="ratings">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <!--/Ratings-->
-                                </div>
-                                <h5 class="card-title">@list.Name</h5>
-                                <p class="card-text truncate">@list.Description</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <small class="room-price">$@list.Price</small>
-                                    <div class="heart-rate"><span class="glyphicon glyphicon-heart checked-heart"></span></div>
-                                </div>
-                            </div>
+<div class="right-column">
+    <!--Right Column content begins-->
+    <div class="card-deck">
+        @foreach (var list in objbnb)
+        {
+            <div class="card-box col-md-4" style="height:450px; width: 280px;">
+                <img class="card-img-top" src="@convertImage(list.Imagebnb)" alt="Card image cap" style="height:50%; width: 100%;">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 class="room-category">@list.Category</h5>
+                        <!--Ratings-->
+                        <div class="ratings">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
                         </div>
-                    }
+                        <!--/Ratings-->
+                    </div>
+                    <h5 class="card-title">@list.Name</h5>
+                    <p class="card-text truncate">@list.Description</p>
                 </div>
-                <!--Right Column content ends-->
+                <div class="card-footer">
+                    <div class="row">
+                        <small class="room-price">$@list.Price</small>
+                        <div class="heart-rate"><span class="glyphicon glyphicon-heart"></span></div>
+                    </div>
+                </div>
             </div>
         }
     </div>
+        <!--Right Column content ends-->
+    </div>
+        }
 </div>
 
 @code {
