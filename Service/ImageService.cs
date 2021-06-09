@@ -26,11 +26,12 @@ namespace RealbnbBeta.Service
 
         /*For the current user*/
         public string UserName;
-        public string SaveInformation(bnbProperties bnbprop)
+        //public string objbnbA;
+        public string SaveInformation(bnbProperties bnbprop, bnbAmenities objbnbA)
             {
 
             //bnbImg.Imagebnb = fileBytes;
-            bnbprop = _bnbService.CreateProperty(bnbprop, UserName);
+            bnbprop = _bnbService.CreateProperty(bnbprop, UserName, objbnbA);
                 if (bnbprop.PropertyId > 0)
                 {
                     return "Saved Succesfully!";

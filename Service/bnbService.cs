@@ -120,14 +120,14 @@ namespace RealbnbBeta.Service
          }*/
 
         bnbProperties _bnbprop = new bnbProperties();
-        public bnbProperties CreateProperty(bnbProperties bnbprop, string username)
+        public bnbProperties CreateProperty(bnbProperties bnbprop, string username, bnbAmenities bnbA)
         {
                 _bnbprop = new bnbProperties();
                 using (IDbConnection con = new SqlConnection(SqlConnectionConfiguration.ConnectionString))
                 {
                     if (con.State == ConnectionState.Closed)
                         con.Open();
-                    var bnbp = con.Query<bnbProperties>("Create_Property", this.SetParameters(bnbprop, username), commandType: CommandType.StoredProcedure);
+                    var bnbp = con.Query<bnbProperties>("Create_Property1", this.SetParameters(bnbprop, username, bnbA), commandType: CommandType.StoredProcedure);
 
                     if (bnbp != null && bnbp.Count() > 0)
                     {
@@ -138,7 +138,7 @@ namespace RealbnbBeta.Service
         }
 
 
-        private DynamicParameters SetParameters(bnbProperties bnbprops, string username)
+        private DynamicParameters SetParameters(bnbProperties bnbprops, string username, bnbAmenities bnbA)
         {
             DynamicParameters parameters = new DynamicParameters();
 
@@ -149,6 +149,7 @@ namespace RealbnbBeta.Service
             parameters.Add("@Location", bnbprops.Location);
             parameters.Add("@Imagebnb", bnbprops.Imagebnb);
             parameters.Add("@Username", username);
+            parameters.Add("@AmenityName", bnbA.AmenityName);
 
             return parameters;
         }

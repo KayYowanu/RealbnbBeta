@@ -9,6 +9,6 @@ namespace RealbnbBeta.Models
     {
         public int AmenityId { get; set; }
         public int PropertyId { get; set; }
-        public string Name { get; set; }
+        public string AmenityName { get; set; }
     }
 }

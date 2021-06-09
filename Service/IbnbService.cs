@@ -11,7 +11,7 @@ namespace RealbnbBeta.Service
         /*For Property*/
 
         Task<IEnumerable<bnbProperties>> GetProperties();
-        bnbProperties CreateProperty(bnbProperties bnb, string username);
+        bnbProperties CreateProperty(bnbProperties bnb, string username, bnbAmenities bnbA);
         //bnbProperties GetProperties2();
         List<bnbProperties> GetProperties2();
         List<bnbProperties> GetProperties2(string username);
