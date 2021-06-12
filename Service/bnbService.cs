@@ -89,35 +89,8 @@ namespace RealbnbBeta.Service
                 }
 
             }
-            /* using (IDbConnection con = new SqlConnection(SqlConnectionConfiguration.ConnectionString))
-             {
-                 if (con.State == ConnectionState.Closed)
-                     con.Open();
-                 var bnbprop = con.Query<bnbProperties>("select * from dbo.bnbProperties order by PropertyId DESC").ToList();
-                 if (bnbprop != null && bnbprop.Count > 0)
-                 {
-                     //_bnbprops = bnbImgs.ToList();
-                     _bnbprops = await conn.Query<bnbProperties>(query, new { Id }, commandType: CommandType.Text);
-                 }
-             }*/
             return _bnbprops;
         }
-        //bnbProperties _bnbprops = new bnbProperties();
-        /* public async Task<IEnumerable<bnbProperties>> GetProperties()
-         {
-             _bnbprops = new bnbProperties();
-             using (IDbConnection con = new SqlConnection(SqlConnectionConfiguration.ConnectionString))
-             {
-                 if (con.State == ConnectionState.Closed)
-                     con.Open();
-                 var bnbprops = con.Query<bnbProperties>("select * from dbo.bnbProperties order by PropertyId DESC").ToList();
-                 if (bnbprops != null && bnbprops.Count > 0)
-                 {
-                     _bnbprops = bnbprops.FirstOrDefault();
-                 }
-             }
-             return (IEnumerable<bnbProperties>)_bnbprops;
-         }*/
 
         bnbProperties _bnbprop = new bnbProperties();
         public bnbProperties CreateProperty(bnbProperties bnbprop, string username, bnbAmenities bnbA)
@@ -153,22 +126,5 @@ namespace RealbnbBeta.Service
 
             return parameters;
         }
-
-      
-
-        /*public Task<bool> DeleteProperty(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bnbProperties SingleProperty(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bnbProperties UpdateProperty(int Id, bnbProperties bnb)
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }

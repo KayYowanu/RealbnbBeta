@@ -10,12 +10,6 @@ namespace RealbnbBeta.Service
 {
     public class ImageService
     {
-        /*private readonly SqlConnectionConfiguration _configuration;
-        public ImageService(SqlConnectionConfiguration configuration)
-        {
-            _configuration = configuration;
-        }*/
-
         /***************/
             IbnbService _bnbService = null;
             public ImageService(IbnbService bnbService)
@@ -26,11 +20,8 @@ namespace RealbnbBeta.Service
 
         /*For the current user*/
         public string UserName;
-        //public string objbnbA;
         public string SaveInformation(bnbProperties bnbprop, bnbAmenities objbnbA)
             {
-
-            //bnbImg.Imagebnb = fileBytes;
             bnbprop = _bnbService.CreateProperty(bnbprop, UserName, objbnbA);
                 if (bnbprop.PropertyId > 0)
                 {
@@ -38,11 +29,6 @@ namespace RealbnbBeta.Service
                 }
                 return "Failed to Save!";
             }
-        /* public List<bnbProperties> GetProperties()
-         {
-             //var kay = _bnbService.GetProperties2();
-             return 
-         }*/
         public byte[] GetImage(string kBase64String)
         {
             byte[] bytes = null;

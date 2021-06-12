@@ -61,30 +61,32 @@
         @foreach (var list in objbnb)
         {
         <div class="card-box col-lg-4">
-            <img class="card-img-top" src="@convertImage(list.Imagebnb)" alt="Card image cap" style="height:50%; width: 100%;">
-            <div class="card-body">
-                <div class="row">
-                    <h5 class="room-category">@list.Category</h5>
-                    <!--Ratings-->
-                    <div class="ratings">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+            <a href="/details">
+                <img class="card-img-top" href="/details" src="@convertImage(list.Imagebnb)" alt="Card image cap" style="height:50%; width: 100%;">
+            </a>
+                <div class="card-body">
+                    <div class="row">
+                        <a class="room-category" href="/details" style="margin-left:15px; text-decoration:none;">@list.Category</a>
+                        <!--Ratings-->
+                        <div class="ratings">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        <!--/Ratings-->
                     </div>
-                    <!--/Ratings-->
+                    <a class="card-title" href="/details" style="text-decoration:none;">@list.Name</a>
+                    <a href="/details" class="card-text truncate" style="color:black; text-decoration:none;">@list.Description</a>
                 </div>
-                <h5 class="card-title">@list.Name</h5>
-                <p class="card-text truncate">@list.Description</p>
-            </div>
-            <div class="card-footer">
-                <div class="row">
-                    <small class="room-price">$@list.Price</small>
-                    <div class="heart-rate"><span class="glyphicon glyphicon-heart .checked-heart"></span></div>
+                <div class="card-footer">
+                    <div class="row">
+                        <small class="room-price">$@list.Price</small>
+                        <div class="heart-rate"><span class="glyphicon glyphicon-heart .checked-heart"></span></div>
+                    </div>
                 </div>
-            </div>
-        </div>
+</div>
         }
     </div>
         <!--Right Column content ends-->
@@ -94,17 +96,11 @@
 
 @code {
     string imgsrc = "";
-
-    //IEnumerable<bnbProperties> objbnb;
-    //bnbProperties objbnb = new bnbProperties();
     List<bnbProperties> objbnb;
 
     protected override void OnInitialized()
     {
         objbnb = bnbservice.GetProperties2();
-        /*ImagePage imagepage = new ImagePage(bnbservice);
-        objbnb = imagepage.GetProperties();
-        imgsrc = objbnb.ImageUrl;*/
     }
     string convertImage(byte[] image)
     {

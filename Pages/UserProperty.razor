@@ -65,18 +65,12 @@
     public string UserName;
 
     string imgsrc = "";
-
-    //IEnumerable<bnbProperties> objbnb;
-    //bnbProperties objbnb = new bnbProperties();
     List<bnbProperties> objbnb;
 
     protected override void OnInitialized()
     {
         UserName = currentUser.HttpContext.User.Identity.Name;
         objbnb = bnbservice.GetProperties2(UserName);
-        /*ImagePage imagepage = new ImagePage(bnbservice);
-        objbnb = imagepage.GetProperties();
-        imgsrc = objbnb.ImageUrl;*/
     }
     string convertImage(byte[] image)
     {

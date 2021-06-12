@@ -1,22 +1,148 @@
 ﻿@page "/details"
 
-    <div class="lightbox-gallery">
-        <div class="container">
-            <div class="row photos">
-                <div class="col-7">
-                    <div class="item1" style="width:100%;"><a href="/img/gallery-4.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery-4.jpg" style="width:100%; height:250px;"></a></div>
-                </div>
-                <div class="col-5">
-                    <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery-5.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery-5.jpg"></a></div>
-                    <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery-6.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery-4.jpg"></a></div>
-                    <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery-5.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery-5.jpg"></a></div>
-                    <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery-4.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery-4.jpg"></a></div>
-                    <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery-6.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery-6.jpg"></a></div>
-                </div>
+<div class="lightbox-gallery">
+    <div class="container">
+        <div class="row photos">
+            <div class="col-7">
+                <div class="item1" style="width:100%;"><a href="/img/gallery/hotel-1.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery/hotel-1.jpg" style="width:100%; height:250px;"></a></div>
+            </div>
+            <div class="col-5">
+                <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery/hotel-2.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery/hotel-2.jpg"></a></div>
+                <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery/hotel-3.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery/hotel-3.jpg"></a></div>
+                <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery/hotel-4.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery/hotel-4.jpg"></a></div>
+                <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery/hotel-5.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery/hotel-5.jpg"></a></div>
+                <div class="col-sm-6 col-md-3 col-lg-4 item"><a href="/img/gallery/hotel-6.jpg" data-lightbox="photos"><img class="img-fluid" src="/img/gallery/hotel-6.jpg"></a></div>
             </div>
         </div>
-    </div>
 
-    @code {
-        
-    }
+        <div class="row">
+            <ul class="list-group col-8" style="margin-bottom:50px;">
+                <li class="list-group-item bottom-border">
+                    <h5><small>Private Room</small></h5>
+                    <h4 style="font-weight:bold;">Hoeger Plains</h4>
+                </li>
+                <li class="list-group-item top-border">
+                    <h4 style="font-weight:bold;">Description</h4>
+                    <input type="checkbox" class="read-more-state" id="post-1" />
+
+                    <h5 class="read-more-wrap">
+                        Aut quam perferendis et at dignissimos nisi. Optio quasi deserunt aut nostrum autem et aspernatur quis. Expedita est perferendis quia velit aperiam corporis.
+                        Expedita est perferendis quia velit aperiam corporis. Consequuntur quis repellendus earum recusandae cupiditate Optio quasi deserunt aut nostrum autem velit
+                        <span class="read-more-target">Libero fuga facilis vel consectetur quos sapiente deleniti eveniet dolores tempore eos deserunt officia quis ab? Excepturi vero tempore minus beatae voluptatem!</span>
+                    </h5>
+
+                    <label for="post-1" class="read-more-trigger"></label>
+                </li>
+                <li class="list-group-item top-border">
+                    <h4 style="font-weight:bold; margin-bottom:10px;">Amenities</h4>
+
+                    <input type="checkbox" class="read-more-state1" id="post-2" />
+                    <div class=" read-more-wrap">
+                        <div class="row item-space">
+
+                            <div class="col-4">Air Conditioning</div>
+                            <div class="col-4">Kitchen</div>
+
+                        </div>
+                        <div class="row item-space">
+                            <div class="col-4">Shampoo</div>
+                            <div class="col-4">Indoor Fireplace</div>
+                        </div>
+                        <div class="row item-space">
+                            <div class="col-4">Dryer</div>
+                            <div class="col-4">Smoke&nbsp;Alarm</div>
+                        </div>
+                        <div class="row item-space">
+                            <div class="col-4 read-more-target">Piano</div>
+                            <div class="col-4 read-more-target">Wifi</div>
+                        </div>
+                        <div class="row item-space">
+                            <div class="col-4 read-more-target">Ski&minus;In/Ski&minus;Out</div>
+                            <div class="col-4 read-more-target">High&nbsp;Chair</div>
+                        </div>
+                        <div class="row item-space">
+                            <div class="col-4 read-more-target">Heating</div>
+                            <div class="col-4 read-more-target">Private Bathroom</div>
+                        </div>
+                    </div>
+                    <label for="post-2" class="read-more-trigger"></label>
+                </li>
+                <li class="list-group-item top-border">
+                    <h4 style="font-weight:bold;">Reviews</h4>
+                    <div class="row">
+                        <div class="rate-wrap col">
+                            <span class="rate-title">accuracy <i class="val">4.4</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" style="width: 88%;" aria-valuenow="4.4" aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                        </div>
+
+                        <div class="rate-wrap col">
+                            <span class="rate-title">communication <i class="val">3.3</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" style="width: 66%;" aria-valuenow="3.25" aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                        </div>
+                        <div class="rate-wrap col">
+                            <span class="rate-title">value <i class="val">2.0</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="1.50" aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="rate-wrap col">
+                            <span class="rate-title">location <i class="val">3.2</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" style="width: 64%;" aria-valuenow="3.2" aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                        </div>
+                        <div class="rate-wrap col">
+                            <span class="rate-title">checkIn <i class="val">2.7</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" style="width: 54%;" aria-valuenow="2.7" aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                        </div>
+                        <div class="rate-wrap col">
+                            <span class="rate-title">checkOut <i class="val">4.6</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar" role="progressbar" style="width: 92%;" aria-valuenow="4.6" aria-valuemin="0" aria-valuemax="5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <!--Booking Begins-->
+            <ul class="list-group col-4">
+                <li class="list-group-item">
+                    <!--Top Nav Begins-->
+                    <ul class="nav nav-pills">
+                        <li class="active"><a data-toggle="pill" href="#home">Check-In</a></li>
+                        <li><a data-toggle="pill" href="#menu1">Payments</a></li>
+                        <li><a data-toggle="pill" href="#menu2">Confirm</a></li>
+                    </ul>
+                    <!--Top Nav Ends-->
+                    <div class="tab-content">
+                        <!--Content Begins-->
+                        <div id="home" class="tab-pane fade in active">
+                            <h5>For Check-In</h5>
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h5>For Payments</h5>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <h5>For Confirm</h5>
+                        </div>
+                    </div>
+                    <!--End of Content-->
+                </li>
+            </ul>
+
+        </div>
+            
+        </div>
+</div>
+@code {
+
+}

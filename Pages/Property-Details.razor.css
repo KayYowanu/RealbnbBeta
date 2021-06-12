@@ -1,3 +1,15 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+.top-border {
+    border-style: solid none none none;
+}
+.bottom-border {
+    border-style:none none solid none;
+}
+/*--------------------------------------------------------------
+# For Images
+--------------------------------------------------------------*/
 .lightbox-gallery {
     background:white;
     color: #000;
@@ -51,3 +63,239 @@
 .lightbox-gallery .item {
     padding-bottom: 30px
 }
+
+/*--------------------------------------------------------------
+# Our Amenities
+--------------------------------------------------------------*/
+.item-space {
+    margin-bottom: 10px;
+}
+.rate-wrap .content h3 {
+    font-weight: 700;
+    font-size: 26px;
+    color: #545454;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 20px;
+}
+
+.rate-wrap .content ul {
+    list-style: none;
+    padding: 0;
+}
+
+    .rate-wrap .content ul li {
+        padding-bottom: 10px;
+    }
+
+    .rate-wrap .content ul i {
+        font-size: 20px;
+        padding-right: 4px;
+        color: #e96b56;
+    }
+
+.rate-wrap .content p:last-child {
+    margin-bottom: 0;
+}
+
+.rate-wrap .progress {
+    height: 62px;
+    display: block;
+    background: none;
+    border-radius: 0;
+}
+
+    .rate-wrap .progress .rate-title {
+        padding: 0;
+        margin: 0 0 6px 0;
+        text-transform: uppercase;
+        display: block;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        color: #545454;
+    }
+
+        .rate-wrap .progress .rate-title .val {
+            float: right;
+            font-style: normal;
+        }
+
+.rate-wrap .progress-bar-wrap {
+    background: #e0e0e0;/*For grey color*/
+    height:5px;
+}
+
+.rate-wrap .progress-bar {
+    width: 1px;
+    height: 5px;
+    transition: .9s;
+    background-color: #0e797d; /*For blue-ish color*/
+}
+
+/*--------------------------------------------------------------
+# For Testimonials
+--------------------------------------------------------------*/
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background: linear-gradient(#01579B, #03A9F4);
+    background-repeat: no-repeat
+}
+
+.card-main {
+    padding: 50px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-shadow: 0px 4px 8px 0px #283593
+}
+
+.card-0 {
+    color: #fff;
+    background-color: #536DFE;
+    position: relative;
+    margin-left: 70px;
+    border-radius: 10px;
+    min-height: 312px
+}
+
+.carousel-indicators li {
+    cursor: pointer;
+    border-radius: 50% !important;
+    width: 10px;
+    height: 10px
+}
+
+.profile {
+    color: #000;
+    background-color: #FFD54F;
+    position: absolute;
+    left: -70px;
+    top: 17%;
+    border-radius: 8px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px
+}
+
+.open-quotes {
+    margin-left: 130px;
+    margin-top: 100px
+}
+
+.content {
+    margin-left: 150px;
+    margin-right: 80px
+}
+
+.close-quotes {
+    margin-bottom: 100px;
+    margin-right: 60px
+}
+
+@media screen and (max-width: 600px) {
+    .card-main {
+        padding: 50px 10px
+    }
+
+    .card-0 {
+        min-height: 432px
+    }
+
+    .profile {
+        top: 24%
+    }
+
+    .profile-pic {
+        width: 90px;
+        height: 90px
+    }
+
+    .open-quotes {
+        margin-left: 100px
+    }
+
+    .content {
+        margin-left: 120px;
+        margin-right: 50px
+    }
+
+    .close-quotes {
+        margin-right: 30px
+    }
+}
+/*--------------------------------------------------------------
+# For Read More - Read Less
+--------------------------------------------------------------*/
+.read-more-state {
+    display: none;
+}
+.read-more-state1 {
+    display: none;
+    color:aqua;
+}
+
+.read-more-target {
+    opacity: 0;
+    max-height: 0;
+    font-size: 0;
+    transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+    opacity: 1;
+    font-size: inherit;
+    max-height: 999em;
+}
+.read-more-state1:checked ~ .read-more-wrap .read-more-target {
+    opacity: 1;
+    font-size: inherit;
+    max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+    content: 'Read more';
+    color: #0e797d;
+}
+.read-more-state1 ~ .read-more-trigger:before {
+    content: 'Show more';
+    color: #0e797d;
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+    content: 'Read less';
+}
+.read-more-state1:checked ~ .read-more-trigger:before {
+    content: 'Show less';
+}
+
+.read-more-trigger {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 .5em;
+    color: black;
+    font-size: .9em;
+    line-height: 2;
+    border: 1px solid #ddd;
+    border-radius: .25em;
+}
+
+/* Other style */
+body {
+    padding: 2%;
+}
+
+p {
+    padding: 2%;
+    color: black;
+}
+/*--------------------------------------------------------------
+# Booking
+--------------------------------------------------------------*/
+/*General*/
